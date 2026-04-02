@@ -365,7 +365,7 @@ jobs:
 
       - name: Install Cosign
         if: github.event_name != 'pull_request_target' && env.is_publish_branch == 'true'
-        uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
+        uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003 # v4.1.1
 
       - name: Sign image with Cosign
         if: github.event_name != 'pull_request_target' && env.is_publish_branch == 'true'
@@ -384,7 +384,7 @@ jobs:
       - name: Scan Docker image
         if: ${{ needs.setup.outputs.has_secrets == 'true' }}
         id: container-scan
-        uses: anchore/scan-action@0d444ed77d83ee2ba7f5ced0d90d640a1281d762 # v7.3.0
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # v7.4.0
         with:
           image: ${{ steps.image-name.outputs.name }}
           fail-build: false
